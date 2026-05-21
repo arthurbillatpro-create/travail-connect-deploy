@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travail Connect — Présentation de la maquette v3</title>
+<meta name="description" content="Maquette du portail Travail Connect (Ministère du Travail). 5 pages d'orientation professionnelle, style Wes Anderson, ultra compact.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 14px;
+  color: #15334d;
+  background: #ffffff;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: #0089bb; text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 2px; }
+ul { list-style: none; }
+h1, h2, h3, h4 { font-family: 'Spectral', Georgia, serif; font-weight: 500; line-height: 1.2; letter-spacing: -.015em; color: #15334d; }
+em { color: #3a7cbf; }
+
+.container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+/* GOUV BAR */
+.gouv {
+  background: #ffffff; border-top: 4px solid #00a8e1; border-bottom: 0.5px solid #15334d30;
+  font-size: 11.5px;
+}
+.gouv .container { display: flex; align-items: center; justify-content: space-between; height: 32px; color: #5e788e; }
+.tri { display: flex; align-items: center; gap: 8px; letter-spacing: .04em; }
+.tri-mark { display: flex; width: 26px; height: 14px; border: 0.5px solid #15334d30; }
+.tri-mark span { flex: 1; }
+.tri-mark span:nth-child(1) { background: #0089bb; }
+.tri-mark span:nth-child(2) { background: #ffffff; }
+.tri-mark span:nth-child(3) { background: #3a7cbf; }
+
+/* HERO */
+.hero { padding: 72px 0 56px; background: linear-gradient(180deg, #ffffff 0%, #e3f0fa 100%); border-bottom: 0.5px solid #15334d20; }
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 11px; font-weight: 500; color: #3a7cbf;
+  letter-spacing: .1em; text-transform: uppercase;
+  margin-bottom: 18px;
+}
+.hero-eyebrow .ti { font-size: 14px; }
+.hero h1 {
+  font-size: 56px; line-height: 1.02;
+  letter-spacing: -.03em; margin-bottom: 18px;
+  max-width: 860px;
+}
+.hero h1 em { font-style: italic; }
+.hero .lead { font-size: 17px; color: #324f69; max-width: 720px; line-height: 1.6; margin-bottom: 32px; }
+
+.hero-cta {
+  display: inline-flex; align-items: center; gap: 7px;
+  padding: 12px 22px; background: #15334d; color: #ffffff;
+  border-radius: 8px; font-size: 14px; font-weight: 500;
+  transition: background .15s;
+}
+.hero-cta:hover { background: #324f69; color: #ffffff; text-decoration: none; }
+.hero-cta .ti { font-size: 18px; }
+
+.hero-meta { display: flex; gap: 36px; margin-top: 44px; padding-top: 28px; border-top: 0.5px solid #15334d20; flex-wrap: wrap; }
+.hero-meta-item { display: flex; flex-direction: column; gap: 3px; }
+.hero-meta-item .lbl { font-size: 10.5px; color: #5e788e; letter-spacing: .07em; text-transform: uppercase; }
+.hero-meta-item .val { font-family: 'Spectral', serif; font-size: 17px; font-weight: 500; color: #15334d; }
+
+@media (max-width: 720px) { .hero h1 { font-size: 36px; } }
+
+/* SECTIONS */
+.section { padding: 64px 0; }
+.section.bg-light { background: #eef5fb; border-top: 0.5px solid #15334d15; border-bottom: 0.5px solid #15334d15; }
+.section-title { font-size: 30px; margin-bottom: 10px; }
+.section-intro { font-size: 14.5px; color: #324f69; max-width: 640px; margin-bottom: 36px; line-height: 1.6; }
+
+/* PAGES GRID */
+.pages-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; }
+
+.page-card {
+  background: #ffffff;
+  border: 0.5px solid #15334d25;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex; flex-direction: column;
+  text-decoration: none; color: inherit;
+  transition: border-color .2s, transform .2s;
+}
+.page-card:hover { border-color: #3a7cbf; transform: translateY(-3px); text-decoration: none; }
+
+.page-preview { height: 200px; border-bottom: 0.5px solid #15334d15; overflow: hidden; position: relative; background: #ffffff; }
+.page-preview svg { width: 100%; height: 100%; display: block; }
+
+.page-card-body { padding: 18px 22px 20px; flex: 1; display: flex; flex-direction: column; }
+.page-card-tag {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 4px;
+  padding: 3px 9px;
+  background: #d4e6f5; color: #3a7cbf;
+  border-radius: 100px;
+  font-size: 10.5px; font-weight: 500; letter-spacing: .04em; text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.page-card h3 { font-size: 19px; margin-bottom: 8px; }
+.page-card p { font-size: 13px; color: #5e788e; line-height: 1.55; flex: 1; margin-bottom: 14px; }
+.page-card-features { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 14px; }
+.page-card-features span {
+  padding: 2px 8px; background: #ffffff; color: #324f69;
+  border-radius: 4px; font-size: 11px;
+}
+.page-card-cta {
+  align-self: flex-start;
+  display: inline-flex; align-items: center; gap: 5px;
+  font-size: 12.5px; font-weight: 500; color: #3a7cbf;
+}
+.page-card-cta .ti { font-size: 15px; transition: transform .15s; }
+.page-card:hover .page-card-cta .ti { transform: translateX(2px); }
+
+/* PRINCIPLES */
+.principles-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; }
+.principle {
+  padding: 22px 20px;
+  background: #ffffff;
+  border: 0.5px solid #15334d20;
+  border-radius: 10px;
+}
+.principle-icon {
+  width: 36px; height: 36px;
+  background: #d6f0fa; color: #3a7cbf;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; margin-bottom: 12px;
+}
+.principle-icon.teal { background: #dce9f6; color: #0089bb; }
+.principle-icon.forest { background: #dce9f6; color: #2b5d92; }
+.principle-icon.mustard { background: #d6f0fa; color: #00a8e1; }
+.principle h4 { font-size: 15px; margin-bottom: 5px; }
+.principle p { font-size: 12.5px; color: #5e788e; line-height: 1.55; }
+
+/* PALETTE */
+.palette-strip { display: flex; gap: 8px; padding: 24px; background: #ffffff; border: 0.5px solid #15334d15; border-radius: 10px; }
+.palette-swatch { flex: 1; display: flex; flex-direction: column; gap: 6px; }
+.palette-color { aspect-ratio: 4/3; border-radius: 6px; border: 0.5px solid #15334d15; }
+.palette-name { font-size: 11px; color: #5e788e; text-align: center; }
+.palette-name code { font-family: 'Inter', monospace; color: #15334d; font-size: 10.5px; }
+
+/* INFO BLOCK */
+.info-block {
+  padding: 36px 40px;
+  background: #ffffff;
+  border: 0.5px solid #15334d25;
+  border-radius: 10px;
+  border-left: 4px solid #3a7cbf;
+}
+.info-block h2 { font-size: 24px; margin-bottom: 10px; }
+.info-block p { font-size: 14px; color: #324f69; margin-bottom: 8px; line-height: 1.6; }
+.info-block .actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 18px; }
+.info-btn { padding: 10px 18px; background: #15334d; color: #ffffff; border-radius: 8px; font-size: 13px; font-weight: 500; display: inline-flex; align-items: center; gap: 6px; }
+.info-btn:hover { background: #324f69; color: #ffffff; text-decoration: none; }
+.info-btn.ghost { background: transparent; color: #15334d; border: 0.5px solid #15334d30; }
+.info-btn.ghost:hover { background: #ffffff; color: #15334d; }
+
+/* FOOTER */
+.footer { background: #e8f1f9; border-top: 0.5px solid #15334d20; padding: 32px 0 18px; font-size: 12px; color: #5e788e; }
+.footer .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px; }
+.footer-brand { display: flex; align-items: center; gap: 10px; }
+.footer-brand-mark { width: 32px; height: 32px; background: #15334d; color: #ffffff; border-radius: 6px; display: flex; align-items: center; justify-content: center; font-family: 'Spectral', serif; font-size: 15px; font-weight: 500; }
+.footer-brand strong { display: block; color: #15334d; font-family: 'Spectral', serif; font-size: 15px; font-weight: 500; }
+.footer-brand span { font-size: 10.5px; color: #5e788e; letter-spacing: .07em; text-transform: uppercase; }
+</style>
+</head>
+<body>
+
+<div class="gouv">
+  <div class="container">
+    <div class="tri"><div class="tri-mark"><span></span><span></span><span></span></div><span>République Française</span></div>
+    <span>Maquette interactive · Travail Connect v3</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="container">
+    <span class="hero-eyebrow"><i class="ti ti-shield-check"></i> Service public d'orientation</span>
+    <h1>Travail Connect — le portail des <em>métiers et formations</em>.</h1>
+    <p class="lead">Maquette interactive d'un portail d'orientation professionnelle pour le Ministère du Travail. Cinq templates compacts, palette Wes Anderson, mise en avant systématique des métiers en tension.</p>
+
+    <a href="index.html" class="hero-cta">
+      <i class="ti ti-arrow-right"></i> Lancer la maquette
+    </a>
+
+    <div class="hero-meta">
+      <div class="hero-meta-item"><span class="lbl">Pages</span><span class="val">5 templates</span></div>
+      <div class="hero-meta-item"><span class="lbl">Style</span><span class="val">Royal Tenenbaums</span></div>
+      <div class="hero-meta-item"><span class="lbl">Responsive</span><span class="val">Mobile + Desktop</span></div>
+      <div class="hero-meta-item"><span class="lbl">Itération</span><span class="val">v3 · mai 2026</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PALETTE -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">La <em>palette</em></h2>
+    <p class="section-intro">Inspirée des films de Wes Anderson, en particulier La Famille Tenenbaum. Tons pastel, sobres, sans agressivité, qui rappellent les guides papier d'orientation des années 70 tout en restant modernes.</p>
+    <div class="palette-strip">
+      <div class="palette-swatch"><div class="palette-color" style="background:#ffffff"></div><span class="palette-name">Crème<br><code>#ffffff</code></span></div>
+      <div class="palette-swatch"><div class="palette-color" style="background:#d4e6f5"></div><span class="palette-name">Ficelle<br><code>#d4e6f5</code></span></div>
+      <div class="palette-swatch"><div class="palette-color" style="background:#00a8e1"></div><span class="palette-name">Moutarde<br><code>#00a8e1</code></span></div>
+      <div class="palette-swatch"><div class="palette-color" style="background:#3a7cbf"></div><span class="palette-name">Brique<br><code>#3a7cbf</code></span></div>
+      <div class="palette-swatch"><div class="palette-color" style="background:#0089bb"></div><span class="palette-name">Canard<br><code>#0089bb</code></span></div>
+      <div class="palette-swatch"><div class="palette-color" style="background:#2b5d92"></div><span class="palette-name">Forêt<br><code>#2b5d92</code></span></div>
+      <div class="palette-swatch"><div class="palette-color" style="background:#15334d"></div><span class="palette-name">Encre<br><code>#15334d</code></span></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAGES -->
+<section class="section bg-light">
+  <div class="container">
+    <h2 class="section-title">Les <em>cinq templates</em></h2>
+    <p class="section-intro">Chaque page peut être ouverte indépendamment. Les liens entre pages sont fonctionnels — vous pouvez naviguer comme dans le vrai site.</p>
+
+    <div class="pages-grid">
+
+      <!-- ACCUEIL -->
+      <a href="index.html" class="page-card">
+        <div class="page-preview">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#ffffff"/>
+            <rect x="0" y="0" width="400" height="10" fill="#ffffff"/>
+            <rect x="0" y="10" width="400" height="22" fill="#ffffff"/>
+            <rect x="14" y="16" width="14" height="11" rx="2" fill="#15334d"/>
+            <rect x="32" y="18" width="60" height="3" rx="1" fill="#15334d"/>
+            <rect x="120" y="18" width="120" height="7" rx="3" fill="#ffffff" stroke="#15334d30" stroke-width=".5"/>
+            <rect x="280" y="17" width="50" height="9" rx="2" fill="#15334d"/>
+            <rect x="0" y="32" width="400" height="12" fill="#ffffff"/>
+            <rect x="14" y="36" width="22" height="2" rx="1" fill="#3a7cbf"/>
+            <rect x="40" y="36" width="22" height="2" rx="1" fill="#5e788e"/>
+            <rect x="66" y="36" width="22" height="2" rx="1" fill="#5e788e"/>
+            <rect x="92" y="36" width="22" height="2" rx="1" fill="#5e788e"/>
+            <!-- HERO -->
+            <rect x="0" y="44" width="400" height="60" fill="#ffffff"/>
+            <rect x="14" y="54" width="240" height="9" rx="2" fill="#15334d"/>
+            <rect x="14" y="68" width="280" height="3" rx="1" fill="#5e788e"/>
+            <rect x="14" y="74" width="180" height="3" rx="1" fill="#5e788e"/>
+            <rect x="14" y="84" width="180" height="13" rx="3" fill="#ffffff" stroke="#15334d30" stroke-width=".5"/>
+            <rect x="160" y="87" width="30" height="7" rx="2" fill="#3a7cbf"/>
+            <!-- 12 cards 4x3 -->
+            <g transform="translate(14, 112)">
+              <rect width="92" height="22" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/>
+              <rect x="4" y="4" width="34" height="2" fill="#5e788e"/>
+              <rect x="4" y="10" width="60" height="3" fill="#15334d"/>
+              <rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/>
+            </g>
+            <g transform="translate(110, 112)"><rect width="92" height="22" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(206, 112)"><rect width="92" height="22" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(302, 112)"><rect width="84" height="22" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="56" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(14, 138)"><rect width="92" height="22" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#5e788e"/></g>
+            <g transform="translate(110, 138)"><rect width="92" height="22" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(206, 138)"><rect width="92" height="22" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#5e788e"/></g>
+            <g transform="translate(302, 138)"><rect width="84" height="22" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="56" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(14, 164)"><rect width="92" height="22" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(110, 164)"><rect width="92" height="22" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#5e788e"/></g>
+            <g transform="translate(206, 164)"><rect width="92" height="22" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(302, 164)"><rect width="84" height="22" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="56" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+          </svg>
+        </div>
+        <div class="page-card-body">
+          <span class="page-card-tag">Accueil</span>
+          <h3>Page d'accueil</h3>
+          <p>Hero institutionnel avec recherche, 12 secteurs colorés, grille de 12 métiers compacts (3×4), témoignages vidéo.</p>
+          <div class="page-card-features">
+            <span>Hero search</span><span>12 secteurs</span><span>Grille 3×4</span><span>Tri tension</span>
+          </div>
+          <span class="page-card-cta">Ouvrir <i class="ti ti-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- FICHE MÉTIER -->
+      <a href="fiche-metier.html" class="page-card">
+        <div class="page-preview">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#ffffff"/>
+            <rect x="0" y="0" width="400" height="34" fill="#ffffff"/>
+            <rect x="14" y="16" width="14" height="11" rx="2" fill="#15334d"/>
+            <rect x="32" y="18" width="60" height="3" rx="1" fill="#15334d"/>
+            <rect x="0" y="34" width="400" height="42" fill="#ffffff"/>
+            <rect x="14" y="42" width="30" height="30" rx="4" fill="#d6f0fa"/>
+            <rect x="50" y="44" width="120" height="6" fill="#15334d"/>
+            <!-- chips -->
+            <rect x="50" y="55" width="36" height="6" rx="3" fill="#dce9f6"/>
+            <rect x="90" y="55" width="36" height="6" rx="3" fill="#d6f0fa"/>
+            <rect x="130" y="55" width="34" height="6" rx="3" fill="#3a7cbf"/>
+            <rect x="168" y="55" width="34" height="6" rx="3" fill="#dce9f6"/>
+            <rect x="50" y="65" width="180" height="2" fill="#5e788e"/>
+            <rect x="50" y="69" width="140" height="2" fill="#5e788e"/>
+            <!-- Layout sidebar + main -->
+            <!-- Sidebar accordions -->
+            <g transform="translate(14, 80)">
+              <rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="50" height="3" fill="#15334d"/>
+              <rect x="92" y="5" width="3" height="3" fill="#5e788e"/>
+            </g>
+            <g transform="translate(14, 96)">
+              <rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="40" height="3" fill="#15334d"/>
+              <rect x="92" y="5" width="3" height="3" fill="#5e788e"/>
+            </g>
+            <g transform="translate(14, 112)">
+              <rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="55" height="3" fill="#15334d"/>
+              <rect x="92" y="5" width="3" height="3" fill="#5e788e"/>
+            </g>
+            <g transform="translate(14, 128)">
+              <rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="45" height="3" fill="#15334d"/>
+            </g>
+            <g transform="translate(14, 144)">
+              <rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="35" height="3" fill="#15334d"/>
+            </g>
+            <g transform="translate(14, 160)">
+              <rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="40" height="3" fill="#15334d"/>
+            </g>
+            <!-- 3 blocs -->
+            <g transform="translate(120, 80)">
+              <rect width="266" height="36" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="12" height="12" rx="2" fill="#d6f0fa"/>
+              <rect x="22" y="6" width="80" height="3" fill="#15334d"/>
+              <rect x="22" y="11" width="120" height="2" fill="#5e788e"/>
+              <rect x="6" y="22" width="60" height="10" rx="2" fill="#d6f0fa"/>
+              <rect x="70" y="22" width="60" height="10" rx="2" fill="#d6f0fa"/>
+              <rect x="134" y="22" width="60" height="10" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="198" y="22" width="62" height="10" rx="2" fill="#d6f0fa"/>
+            </g>
+            <g transform="translate(120, 120)">
+              <rect width="266" height="36" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="12" height="12" rx="2" fill="#dce9f6"/>
+              <rect x="22" y="6" width="80" height="3" fill="#15334d"/>
+              <rect x="22" y="11" width="120" height="2" fill="#5e788e"/>
+              <rect x="6" y="22" width="60" height="10" rx="2" fill="#d6f0fa"/>
+              <rect x="70" y="22" width="60" height="10" rx="2" fill="#d6f0fa"/>
+              <rect x="134" y="22" width="60" height="10" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="198" y="22" width="62" height="10" rx="2" fill="#d6f0fa"/>
+            </g>
+            <g transform="translate(120, 160)">
+              <rect width="266" height="36" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="12" height="12" rx="2" fill="#dce9f6"/>
+              <rect x="22" y="6" width="80" height="3" fill="#15334d"/>
+              <rect x="22" y="11" width="120" height="2" fill="#5e788e"/>
+              <rect x="6" y="22" width="60" height="10" rx="2" fill="#d6f0fa"/>
+              <rect x="70" y="22" width="60" height="10" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="134" y="22" width="60" height="10" rx="2" fill="#d6f0fa"/>
+              <rect x="198" y="22" width="62" height="10" rx="2" fill="#d6f0fa"/>
+            </g>
+          </svg>
+        </div>
+        <div class="page-card-body">
+          <span class="page-card-tag" style="background:#dce9f6; color:#0089bb;">Fiche métier · pièce maîtresse</span>
+          <h3>Fiche métier détaillée</h3>
+          <p>Sidebar avec 6 accordéons (compétences, témoignages, salaires, conditions, FAQ, chiffres). Header compact à 4 chips. Trois blocs : accès, métiers liés, évolutions.</p>
+          <div class="page-card-features">
+            <span>6 accordéons</span><span>3 blocs principaux</span><span>Tension mise en avant</span>
+          </div>
+          <span class="page-card-cta">Ouvrir <i class="ti ti-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- RECHERCHE -->
+      <a href="recherche.html" class="page-card">
+        <div class="page-preview">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#ffffff"/>
+            <rect x="0" y="0" width="400" height="34" fill="#ffffff"/>
+            <rect x="14" y="16" width="14" height="11" rx="2" fill="#15334d"/>
+            <rect x="32" y="18" width="60" height="3" rx="1" fill="#15334d"/>
+            <!-- Filters sidebar -->
+            <rect x="14" y="46" width="100" height="140" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+            <rect x="20" y="52" width="30" height="3" fill="#5e788e"/>
+            <line x1="20" y1="60" x2="108" y2="60" stroke="#15334d15"/>
+            <rect x="20" y="66" width="30" height="2" fill="#15334d"/>
+            <g fill="#5e788e">
+              <rect x="20" y="72" width="4" height="4"/><rect x="28" y="73" width="40" height="2"/>
+              <rect x="20" y="80" width="4" height="4" fill="#3a7cbf"/><rect x="28" y="81" width="40" height="2"/>
+              <rect x="20" y="88" width="4" height="4"/><rect x="28" y="89" width="40" height="2"/>
+              <rect x="20" y="96" width="4" height="4" fill="#3a7cbf"/><rect x="28" y="97" width="40" height="2"/>
+            </g>
+            <rect x="20" y="108" width="30" height="2" fill="#15334d"/>
+            <line x1="20" y1="116" x2="108" y2="116" stroke="#15334d15"/>
+            <g fill="#5e788e">
+              <rect x="20" y="122" width="4" height="4"/><rect x="28" y="123" width="40" height="2"/>
+              <rect x="20" y="130" width="4" height="4" fill="#3a7cbf"/><rect x="28" y="131" width="40" height="2"/>
+              <rect x="20" y="138" width="4" height="4"/><rect x="28" y="139" width="40" height="2"/>
+            </g>
+            <rect x="20" y="156" width="88" height="10" rx="2" fill="#15334d"/>
+            <!-- Results grid -->
+            <rect x="120" y="40" width="266" height="12" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+            <g transform="translate(120, 56)"><rect width="86" height="32" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="40" height="2" fill="#5e788e"/><rect x="4" y="11" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/><rect x="4" y="24" width="30" height="2" fill="#5e788e"/></g>
+            <g transform="translate(210, 56)"><rect width="86" height="32" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="40" height="2" fill="#5e788e"/><rect x="4" y="11" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/><rect x="4" y="24" width="30" height="2" fill="#5e788e"/></g>
+            <g transform="translate(300, 56)"><rect width="86" height="32" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="40" height="2" fill="#5e788e"/><rect x="4" y="11" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/><rect x="4" y="24" width="30" height="2" fill="#5e788e"/></g>
+            <g transform="translate(120, 92)"><rect width="86" height="32" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="4" y="4" width="40" height="2" fill="#5e788e"/><rect x="4" y="11" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#5e788e"/><rect x="4" y="24" width="30" height="2" fill="#5e788e"/></g>
+            <g transform="translate(210, 92)"><rect width="86" height="32" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="40" height="2" fill="#5e788e"/><rect x="4" y="11" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/><rect x="4" y="24" width="30" height="2" fill="#5e788e"/></g>
+            <g transform="translate(300, 92)"><rect width="86" height="32" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="40" height="2" fill="#5e788e"/><rect x="4" y="11" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/><rect x="4" y="24" width="30" height="2" fill="#5e788e"/></g>
+            <g transform="translate(120, 128)"><rect width="86" height="32" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="40" height="2" fill="#5e788e"/><rect x="4" y="11" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/><rect x="4" y="24" width="30" height="2" fill="#5e788e"/></g>
+            <g transform="translate(210, 128)"><rect width="86" height="32" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="4" y="4" width="40" height="2" fill="#5e788e"/><rect x="4" y="11" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#5e788e"/><rect x="4" y="24" width="30" height="2" fill="#5e788e"/></g>
+            <g transform="translate(300, 128)"><rect width="86" height="32" rx="4" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="40" height="2" fill="#5e788e"/><rect x="4" y="11" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/><rect x="4" y="24" width="30" height="2" fill="#5e788e"/></g>
+            <!-- pagination -->
+            <g transform="translate(180, 170)">
+              <rect width="9" height="9" rx="2" fill="#15334d"/>
+              <rect x="12" width="9" height="9" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="24" width="9" height="9" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="36" width="9" height="9" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="48" width="9" height="9" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+            </g>
+          </svg>
+        </div>
+        <div class="page-card-body">
+          <span class="page-card-tag">Recherche</span>
+          <h3>Recherche métiers</h3>
+          <p>Filtres latéraux (secteur, niveau, tension, salaire, contrat), grille compacte de résultats, tension décroissante par défaut.</p>
+          <div class="page-card-features">
+            <span>5 catégories filtres</span><span>Grille 3 colonnes</span><span>Slider salaire</span>
+          </div>
+          <span class="page-card-cta">Ouvrir <i class="ti ti-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- SECTEUR -->
+      <a href="secteur.html" class="page-card">
+        <div class="page-preview">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#ffffff"/>
+            <rect x="0" y="0" width="400" height="34" fill="#ffffff"/>
+            <rect x="14" y="16" width="14" height="11" rx="2" fill="#15334d"/>
+            <rect x="32" y="18" width="60" height="3" rx="1" fill="#15334d"/>
+            <!-- Banner -->
+            <rect x="0" y="34" width="400" height="60" fill="#ffffff"/>
+            <rect x="14" y="44" width="40" height="3" rx="1" fill="#3a7cbf"/>
+            <rect x="14" y="52" width="200" height="10" fill="#15334d"/>
+            <rect x="14" y="68" width="260" height="2" fill="#5e788e"/>
+            <rect x="14" y="74" width="240" height="2" fill="#5e788e"/>
+            <g fill="#3a7cbf">
+              <rect x="14" y="84" width="20" height="6"/>
+            </g>
+            <g fill="#5e788e">
+              <rect x="40" y="86" width="14" height="2"/>
+              <rect x="84" y="84" width="20" height="6" fill="#3a7cbf"/>
+              <rect x="110" y="86" width="14" height="2"/>
+              <rect x="154" y="84" width="20" height="6" fill="#3a7cbf"/>
+              <rect x="180" y="86" width="14" height="2"/>
+              <rect x="224" y="84" width="20" height="6" fill="#3a7cbf"/>
+              <rect x="250" y="86" width="14" height="2"/>
+            </g>
+            <!-- Sous domaines -->
+            <g transform="translate(14, 102)">
+              <rect width="60" height="22" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="4" y="4" width="10" height="10" rx="2" fill="#3a7cbf"/>
+              <rect x="4" y="16" width="36" height="3" fill="#15334d"/>
+            </g>
+            <g transform="translate(80, 102)"><rect width="60" height="22" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="4" y="4" width="10" height="10" rx="2" fill="#0089bb"/><rect x="4" y="16" width="36" height="3" fill="#15334d"/></g>
+            <g transform="translate(146, 102)"><rect width="60" height="22" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="4" y="4" width="10" height="10" rx="2" fill="#00a8e1"/><rect x="4" y="16" width="36" height="3" fill="#15334d"/></g>
+            <g transform="translate(212, 102)"><rect width="60" height="22" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="4" y="4" width="10" height="10" rx="2" fill="#2b5d92"/><rect x="4" y="16" width="36" height="3" fill="#15334d"/></g>
+            <g transform="translate(278, 102)"><rect width="60" height="22" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="4" y="4" width="10" height="10" rx="2" fill="#3a7cbf"/><rect x="4" y="16" width="36" height="3" fill="#15334d"/></g>
+            <!-- Métiers grid -->
+            <g transform="translate(14, 132)"><rect width="92" height="22" rx="3" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(110, 132)"><rect width="92" height="22" rx="3" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(206, 132)"><rect width="92" height="22" rx="3" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(302, 132)"><rect width="84" height="22" rx="3" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="56" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(14, 160)"><rect width="92" height="22" rx="3" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(110, 160)"><rect width="92" height="22" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#5e788e"/></g>
+            <g transform="translate(206, 160)"><rect width="92" height="22" rx="3" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="60" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+            <g transform="translate(302, 160)"><rect width="84" height="22" rx="3" fill="#d6f0fa" stroke="#3a7cbf" stroke-width=".5"/><rect x="4" y="4" width="34" height="2" fill="#5e788e"/><rect x="4" y="10" width="56" height="3" fill="#15334d"/><rect x="4" y="17" width="40" height="2" fill="#3a7cbf"/></g>
+          </svg>
+        </div>
+        <div class="page-card-body">
+          <span class="page-card-tag">Secteur</span>
+          <h3>Page secteur</h3>
+          <p>Bannière avec stats, 6 sous-domaines, grille de 12 métiers du secteur, tableau de formations. Mise en avant systématique des métiers en tension.</p>
+          <div class="page-card-features">
+            <span>4 stats clés</span><span>6 sous-domaines</span><span>12 métiers</span><span>Table formations</span>
+          </div>
+          <span class="page-card-cta">Ouvrir <i class="ti ti-arrow-right"></i></span>
+        </div>
+      </a>
+
+      <!-- FORMATION -->
+      <a href="formation.html" class="page-card">
+        <div class="page-preview">
+          <svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+            <rect width="400" height="200" fill="#ffffff"/>
+            <rect x="0" y="0" width="400" height="34" fill="#ffffff"/>
+            <rect x="14" y="16" width="14" height="11" rx="2" fill="#15334d"/>
+            <rect x="32" y="18" width="60" height="3" rx="1" fill="#15334d"/>
+            <!-- Hero formation -->
+            <rect x="0" y="34" width="400" height="44" fill="#eef5fb"/>
+            <rect x="14" y="42" width="30" height="30" rx="4" fill="#d6f0fa"/>
+            <rect x="50" y="44" width="100" height="6" fill="#15334d"/>
+            <rect x="50" y="55" width="30" height="6" rx="3" fill="#dce9f6"/>
+            <rect x="84" y="55" width="30" height="6" rx="3" fill="#d6f0fa"/>
+            <rect x="118" y="55" width="32" height="6" rx="3" fill="#3a7cbf"/>
+            <rect x="154" y="55" width="30" height="6" rx="3" fill="#dce9f6"/>
+            <rect x="50" y="66" width="180" height="2" fill="#5e788e"/>
+            <!-- Sidebar accordions -->
+            <g transform="translate(14, 84)">
+              <rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="50" height="3" fill="#15334d"/>
+              <rect x="92" y="5" width="3" height="3" fill="#5e788e"/>
+            </g>
+            <g transform="translate(14, 100)"><rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="6" y="5" width="40" height="3" fill="#15334d"/></g>
+            <g transform="translate(14, 116)"><rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="6" y="5" width="50" height="3" fill="#15334d"/></g>
+            <g transform="translate(14, 132)"><rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="6" y="5" width="45" height="3" fill="#15334d"/></g>
+            <g transform="translate(14, 148)"><rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="6" y="5" width="55" height="3" fill="#15334d"/></g>
+            <g transform="translate(14, 164)"><rect width="100" height="13" rx="3" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/><rect x="6" y="5" width="40" height="3" fill="#15334d"/></g>
+            <!-- 3 blocs -->
+            <g transform="translate(120, 84)">
+              <rect width="266" height="34" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="12" height="12" rx="2" fill="#d6f0fa"/>
+              <rect x="22" y="6" width="80" height="3" fill="#15334d"/>
+              <rect x="22" y="11" width="120" height="2" fill="#5e788e"/>
+              <rect x="6" y="22" width="62" height="9" rx="2" fill="#d6f0fa"/>
+              <rect x="72" y="22" width="62" height="9" rx="2" fill="#d6f0fa"/>
+              <rect x="138" y="22" width="62" height="9" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="204" y="22" width="56" height="9" rx="2" fill="#d6f0fa"/>
+            </g>
+            <g transform="translate(120, 122)">
+              <rect width="266" height="34" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="12" height="12" rx="2" fill="#dce9f6"/>
+              <rect x="22" y="6" width="80" height="3" fill="#15334d"/>
+              <rect x="22" y="11" width="120" height="2" fill="#5e788e"/>
+              <rect x="6" y="22" width="62" height="9" rx="2" fill="#d6f0fa"/>
+              <rect x="72" y="22" width="62" height="9" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="138" y="22" width="62" height="9" rx="2" fill="#d6f0fa"/>
+              <rect x="204" y="22" width="56" height="9" rx="2" fill="#d6f0fa"/>
+            </g>
+            <g transform="translate(120, 160)">
+              <rect width="266" height="34" rx="4" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="6" y="5" width="12" height="12" rx="2" fill="#dce9f6"/>
+              <rect x="22" y="6" width="80" height="3" fill="#15334d"/>
+              <rect x="22" y="11" width="120" height="2" fill="#5e788e"/>
+              <rect x="6" y="22" width="62" height="9" rx="2" fill="#d6f0fa"/>
+              <rect x="72" y="22" width="62" height="9" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="138" y="22" width="62" height="9" rx="2" fill="#ffffff" stroke="#15334d20" stroke-width=".5"/>
+              <rect x="204" y="22" width="56" height="9" rx="2" fill="#d6f0fa"/>
+            </g>
+          </svg>
+        </div>
+        <div class="page-card-body">
+          <span class="page-card-tag" style="background:#d6f0fa; color:#3a7cbf;">Formation</span>
+          <h3>Fiche formation</h3>
+          <p>Header compact à 4 chips. Sidebar accordéons (programme, où se former, financement, admission, chiffres). Trois blocs : métiers accessibles, formations proches, poursuites d'études.</p>
+          <div class="page-card-features">
+            <span>6 accordéons</span><span>3 blocs</span><span>Détail financement</span>
+          </div>
+          <span class="page-card-cta">Ouvrir <i class="ti ti-arrow-right"></i></span>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">Principes de <em>conception</em></h2>
+    <p class="section-intro">Les choix structurants de cette itération v3.</p>
+
+    <div class="principles-grid">
+      <div class="principle">
+        <div class="principle-icon"><i class="ti ti-grid-dots"></i></div>
+        <h4>Compacité maximale</h4>
+        <p>3 cartes métier par ligne, 12 visibles sur une demi-page. Hauteur réduite, padding millimétré.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-icon teal"><i class="ti ti-flame"></i></div>
+        <h4>Tension mise en avant</h4>
+        <p>Toutes les cartes en tension apparaissent en brique, avec badge dédié. Tri par défaut sur la tension.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-icon forest"><i class="ti ti-layout-sidebar"></i></div>
+        <h4>Sidebar dépliable</h4>
+        <p>Six accordéons sur les fiches détaillées. L'utilisateur ouvre uniquement ce qui l'intéresse.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-icon mustard"><i class="ti ti-typography"></i></div>
+        <h4>Typo éditoriale</h4>
+        <p>Spectral italique sur les titres (esprit guide d'orientation papier), Inter pour le corps.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-icon"><i class="ti ti-palette"></i></div>
+        <h4>Pastels Wes Anderson</h4>
+        <p>Crème, brique, canard, forêt, moutarde. Aucune couleur saturée, contraste doux.</p>
+      </div>
+      <div class="principle">
+        <div class="principle-icon teal"><i class="ti ti-bolt"></i></div>
+        <h4>Performance native</h4>
+        <p>Aucun JavaScript, pas de framework. Polices et icônes en CDN. Ouverture instantanée.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INFO BLOCK -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="info-block">
+      <h2>Comment <em>partager</em> cette maquette</h2>
+      <p>Cette page est l'entrée recommandée pour découvrir le portail. Tous les liens internes sont fonctionnels — votre destinataire peut naviguer comme dans le vrai site, depuis n'importe quel navigateur, sur n'importe quel appareil.</p>
+      <p style="font-size:12.5px; color:#5e788e; margin-top:14px;">URL publique : <code style="background:#ffffff; padding:2px 6px; border-radius:4px;">arthurbillatpro-create.github.io/travail-connect-deploy/presentation.html</code></p>
+      <div class="actions">
+        <a href="index.html" class="info-btn"><i class="ti ti-arrow-right"></i> Lancer la maquette</a>
+        <a href="fiche-metier.html" class="info-btn ghost"><i class="ti ti-file-text"></i> Voir une fiche métier</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-brand">
+      <span class="footer-brand-mark">T</span>
+      <div><strong>Travail Connect</strong><span>Maquette · Ministère du Travail</span></div>
+    </div>
+    <span>v3 · mai 2026 · Style Royal Tenenbaums</span>
+    <div class="tri"><div class="tri-mark"><span></span><span></span><span></span></div><span style="font-size:10.5px;">République Française</span></div>
+  </div>
+</footer>
+
+</body>
+</html>

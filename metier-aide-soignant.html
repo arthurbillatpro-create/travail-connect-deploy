@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aide-soignant(e) — Travail Connect</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+<style>
+:root {
+  --blue-900: #0c1a3a; --blue-700: #1a3566; --blue-600: #1e4d8f;
+  --blue-500: #2563eb; --blue-400: #3b82f6; --blue-300: #93bbfd; --blue-100: #dbeafe; --blue-50: #eff6ff;
+  --green-600: #16a34a; --green-100: #dcfce7;
+  --orange-500: #f59e0b; --orange-100: #fef3c7;
+  --red-500: #ef4444;
+  --gray-900: #111827; --gray-800: #1f2937; --gray-700: #374151; --gray-600: #4b5563;
+  --gray-500: #6b7280; --gray-400: #9ca3af; --gray-300: #d1d5db; --gray-200: #e5e7eb;
+  --gray-100: #f3f4f6; --gray-50: #f9fafb; --white: #fff;
+  --font: 'Inter', system-ui, -apple-system, sans-serif;
+  --shadow-sm: 0 1px 2px rgba(0,0,0,.05);
+  --shadow: 0 1px 3px rgba(0,0,0,.1), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 6px rgba(0,0,0,.07), 0 2px 4px rgba(0,0,0,.06);
+  --r: 12px; --r-sm: 8px; --r-xs: 4px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+body { font-family: var(--font); font-size: 15px; color: var(--gray-800); background: var(--gray-50); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--blue-500); text-decoration: none; } a:hover { text-decoration: underline; }
+ul { list-style: none; } img { max-width: 100%; display: block; }
+button { cursor: pointer; font-family: var(--font); }
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+/* GOV BAR */
+.gov-bar { background: var(--blue-900); padding: 8px 0; font-size: 12px; color: rgba(255,255,255,.6); }
+.gov-bar .container { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+.gov-bar-left { display: flex; align-items: center; gap: 12px; }
+.gov-bar-left .sep { width: 1px; height: 16px; background: rgba(255,255,255,.2); }
+.gov-bar-left span { font-weight: 600; color: rgba(255,255,255,.85); }
+.gov-bar-right { display: flex; align-items: center; gap: 16px; }
+.gov-bar-right a { color: rgba(255,255,255,.6); font-size: 12px; } .gov-bar-right a:hover { color: #fff; text-decoration: none; }
+
+/* HEADER */
+.site-header { background: var(--white); border-bottom: 1px solid var(--gray-200); position: sticky; top: 0; z-index: 100; box-shadow: var(--shadow-sm); }
+.header-inner { display: flex; align-items: center; justify-content: space-between; height: 60px; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo-mark { width: 36px; height: 36px; background: linear-gradient(135deg, var(--blue-500), var(--blue-700)); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 20px; }
+.logo-text { font-size: 18px; font-weight: 800; color: var(--gray-900); letter-spacing: -.03em; }
+.logo-text span { color: var(--blue-500); }
+.nav-main { display: flex; align-items: center; gap: 2px; }
+.nav-link { padding: 8px 14px; font-size: 13.5px; font-weight: 600; color: var(--gray-600); border-radius: var(--r-sm); transition: all .15s; text-decoration: none; }
+.nav-link:hover { background: var(--blue-50); color: var(--blue-600); text-decoration: none; }
+.nav-link.active { background: var(--blue-500); color: #fff; }
+.header-actions { display: flex; align-items: center; gap: 8px; }
+.icon-btn { width: 36px; height: 36px; border: 1px solid var(--gray-200); border-radius: var(--r-sm); background: var(--white); display: flex; align-items: center; justify-content: center; color: var(--gray-500); font-size: 20px; transition: all .15s; }
+.icon-btn:hover { border-color: var(--blue-300); color: var(--blue-500); background: var(--blue-50); }
+.menu-toggle { display: none; background: none; border: none; font-size: 28px; color: var(--gray-700); }
+@media (max-width: 900px) { .nav-main, .header-actions { display: none; } .menu-toggle { display: block; } }
+
+/* HERO */
+.career-hero { background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-700) 60%, var(--blue-500) 100%); padding: 40px 0 32px; position: relative; overflow: hidden; }
+.career-hero::after { content: ''; position: absolute; right: -100px; top: -100px; width: 400px; height: 400px; border-radius: 50%; background: radial-gradient(circle, rgba(59,130,246,.25), transparent 70%); }
+.hero-inner { position: relative; z-index: 1; }
+.breadcrumb { display: flex; align-items: center; gap: 6px; font-size: 13px; color: rgba(255,255,255,.5); margin-bottom: 20px; flex-wrap: wrap; }
+.breadcrumb a { color: rgba(255,255,255,.65); } .breadcrumb a:hover { color: #fff; }
+.hero-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+.hero-left { flex: 1; }
+.hero-title { font-size: 34px; font-weight: 900; color: #fff; line-height: 1.1; letter-spacing: -.03em; margin-bottom: 8px; }
+.hero-sector { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.15); border-radius: 20px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.8); margin-bottom: 16px; }
+.hero-actions { display: flex; gap: 8px; flex-shrink: 0; }
+.btn-hero { display: flex; align-items: center; gap: 6px; padding: 8px 16px; border-radius: var(--r-sm); font-size: 13px; font-weight: 600; border: 1px solid rgba(255,255,255,.25); background: rgba(255,255,255,.1); color: #fff; transition: all .2s; }
+.btn-hero:hover { background: rgba(255,255,255,.2); }
+.btn-hero .material-icons-outlined { font-size: 18px; }
+.hero-desc { font-size: 15.5px; color: rgba(255,255,255,.75); line-height: 1.65; max-width: 680px; margin-bottom: 20px; }
+.hero-pills { display: flex; flex-wrap: wrap; gap: 8px; }
+.pill { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: 700; }
+.pill .material-icons-outlined { font-size: 16px; }
+.pill-white { background: #fff; color: var(--gray-800); }
+.pill-green { background: var(--green-600); color: #fff; }
+.pill-orange { background: var(--orange-500); color: #fff; }
+.hero-demand { margin-top: 24px; }
+.hero-demand-banner { display: flex; align-items: center; gap: 10px; padding: 12px 18px; background: rgba(22,163,74,.15); border: 1px solid rgba(22,163,74,.25); border-radius: var(--r-sm); margin-bottom: 14px; font-size: 14px; font-weight: 600; color: #bbf7d0; }
+.hero-demand-banner strong { color: #fff; }
+.hero-stats-row { display: flex; gap: 12px; flex-wrap: wrap; }
+.hero-stat { flex: 1; min-width: 100px; padding: 14px 16px; text-align: center; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.12); border-radius: var(--r-sm); }
+.hero-stat-val { font-size: 22px; font-weight: 900; color: #fff; }
+.hero-stat-lbl { font-size: 11px; color: rgba(255,255,255,.55); font-weight: 500; }
+
+/* ========== MAIN LAYOUT ========== */
+.main-layout { display: grid; grid-template-columns: 220px 1fr; gap: 0; padding: 32px 0 64px; align-items: start; }
+@media (max-width: 900px) { .main-layout { grid-template-columns: 1fr; } }
+
+/* ========== SIDE NAV — like CareersPortal ========== */
+.side-nav { position: sticky; top: 76px; border-right: 1px solid var(--gray-200); padding-right: 0; }
+.side-nav-list { display: flex; flex-direction: column; }
+.side-nav-link {
+  display: block; padding: 14px 20px; font-size: 14px; font-weight: 600;
+  color: var(--blue-600); border-bottom: 1px solid var(--gray-200);
+  text-decoration: none; transition: all .1s; cursor: pointer;
+}
+.side-nav-link:first-child { border-top: 1px solid var(--gray-200); }
+.side-nav-link:hover { background: var(--blue-50); text-decoration: none; }
+.side-nav-link.active { background: var(--blue-50); color: var(--blue-600); font-weight: 700; border-left: 4px solid var(--blue-500); }
+.side-nav-link.disabled { color: var(--gray-400); pointer-events: none; }
+@media (max-width: 900px) { .side-nav { display: none; } }
+
+/* ========== CONTENT PANELS ========== */
+.content-col { padding-left: 32px; }
+.panel { display: none; }
+.panel.active { display: block; }
+.panel-title { font-size: 24px; font-weight: 900; color: var(--gray-900); letter-spacing: -.02em; margin-bottom: 20px; }
+.sub-title { font-size: 16px; font-weight: 700; color: var(--gray-800); margin: 28px 0 14px; }
+
+/* ENV CARDS */
+.env-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-bottom: 24px; }
+.env-card { border-radius: var(--r-sm); overflow: hidden; border: 1px solid var(--gray-200); transition: transform .15s, box-shadow .15s; }
+.env-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+.env-card-img { height: 150px; background-size: cover; background-position: center; background-color: var(--gray-200); }
+.env-card-body { padding: 12px 14px; display: flex; align-items: center; gap: 10px; }
+.env-card-icon { width: 32px; height: 32px; background: var(--blue-50); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+.env-card-icon .material-icons-outlined { font-size: 18px; color: var(--blue-500); }
+.env-card-text h4 { font-size: 13px; font-weight: 700; color: var(--blue-700); }
+.env-card-text p { font-size: 11px; color: var(--gray-500); }
+
+/* GAUGE BARS */
+.gauge-list { display: flex; flex-direction: column; gap: 12px; }
+.gauge-item { display: flex; align-items: center; gap: 14px; }
+.gauge-label { min-width: 220px; font-size: 13px; font-weight: 500; color: var(--gray-700); }
+.gauge-track { flex: 1; height: 10px; background: var(--gray-100); border-radius: 5px; overflow: hidden; }
+.gauge-fill { height: 100%; border-radius: 5px; }
+.gauge-fill.high { background: linear-gradient(90deg, var(--blue-500), var(--blue-400)); }
+.gauge-fill.mid { background: linear-gradient(90deg, var(--blue-500), var(--blue-300)); }
+.gauge-fill.low { background: linear-gradient(90deg, var(--blue-300), var(--gray-300)); }
+.gauge-note { font-size: 12px; color: var(--gray-400); font-style: italic; margin-top: 8px; }
+@media (max-width: 600px) { .gauge-label { min-width: 140px; font-size: 12px; } }
+
+/* ACTIVITY BARS */
+.activity-list { display: flex; flex-direction: column; gap: 10px; }
+.activity-row { display: flex; align-items: center; gap: 14px; }
+.activity-bar-track { width: 200px; height: 8px; background: var(--gray-100); border-radius: 4px; overflow: hidden; flex-shrink: 0; }
+.activity-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, var(--blue-600), var(--blue-400)); }
+.activity-name { font-size: 13px; color: var(--gray-700); font-weight: 500; }
+
+/* TASK ITEMS */
+.tasks-list { display: flex; flex-direction: column; gap: 6px; }
+.task-item { display: flex; align-items: flex-start; gap: 12px; padding: 12px 14px; background: var(--gray-50); border-radius: var(--r-xs); border-left: 3px solid var(--blue-500); }
+.task-num { min-width: 24px; height: 24px; background: var(--blue-500); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; flex-shrink: 0; }
+.task-text { font-size: 13.5px; line-height: 1.5; color: var(--gray-700); }
+
+/* QUALITIES */
+.qualities-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin-bottom: 16px; }
+.quality-chip { display: flex; align-items: center; gap: 8px; padding: 10px 12px; background: var(--gray-50); border-radius: var(--r-xs); border: 1px solid var(--gray-200); }
+.quality-chip .material-icons-outlined { font-size: 18px; color: var(--blue-500); }
+.quality-chip span { font-size: 13px; font-weight: 600; color: var(--gray-700); }
+.interest-block { padding: 16px; background: var(--blue-50); border-radius: var(--r-sm); border-left: 4px solid var(--blue-500); }
+.interest-block h4 { font-size: 14px; font-weight: 700; color: var(--blue-700); margin-bottom: 6px; }
+.interest-block p { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+
+/* TIMELINE */
+.timeline { position: relative; padding-left: 24px; }
+.timeline::before { content: ''; position: absolute; left: 8px; top: 0; bottom: 0; width: 2px; background: var(--blue-100); }
+.timeline-item { position: relative; margin-bottom: 22px; }
+.timeline-item::before { content: ''; position: absolute; left: -19px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background: var(--blue-500); border: 2px solid var(--white); box-shadow: 0 0 0 2px var(--blue-200); }
+.timeline-item h4 { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 3px; }
+.timeline-item p { font-size: 13px; color: var(--gray-600); line-height: 1.5; }
+.timeline-tags { display: flex; flex-wrap: wrap; gap: 5px; margin-top: 6px; }
+.tag { display: inline-flex; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 700; }
+.tag-blue { background: var(--blue-100); color: var(--blue-600); }
+.tag-green { background: var(--green-100); color: var(--green-600); }
+.tag-orange { background: var(--orange-100); color: #b07800; }
+
+/* SALARY */
+.salary-range-visual { display: flex; align-items: center; gap: 16px; padding: 20px; background: linear-gradient(135deg, var(--blue-50), var(--gray-50)); border-radius: var(--r-sm); margin-bottom: 16px; }
+.salary-val { font-size: 26px; font-weight: 900; color: var(--blue-600); }
+.salary-lbl { font-size: 11px; color: var(--gray-500); }
+.salary-bar-outer { flex: 1; height: 10px; background: var(--gray-200); border-radius: 5px; }
+.salary-bar-inner { height: 100%; background: linear-gradient(90deg, var(--blue-400), var(--blue-600)); border-radius: 5px; }
+.salary-table { width: 100%; border-collapse: separate; border-spacing: 0; border-radius: var(--r-sm); overflow: hidden; border: 1px solid var(--gray-200); }
+.salary-table th { background: var(--blue-900); color: #fff; padding: 10px 14px; font-size: 12px; font-weight: 700; text-align: left; }
+.salary-table td { padding: 10px 14px; font-size: 13px; border-bottom: 1px solid var(--gray-100); }
+.salary-table tr:last-child td { border-bottom: none; }
+.salary-table tr:nth-child(even) td { background: var(--gray-50); }
+.salary-highlight { font-weight: 700; color: var(--blue-600); }
+
+/* CONTACTS */
+.contacts-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 10px; }
+.contact-card { padding: 14px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r-sm); transition: border-color .15s; }
+.contact-card:hover { border-color: var(--blue-300); }
+.contact-card h4 { font-size: 13px; font-weight: 700; color: var(--blue-700); margin-bottom: 4px; }
+.contact-card p { font-size: 12px; color: var(--gray-500); margin-bottom: 3px; }
+.contact-card a { font-size: 12px; font-weight: 600; }
+
+/* VIDEO LINKS */
+.video-list { display: flex; flex-direction: column; gap: 8px; }
+.video-link { display: flex; align-items: center; gap: 10px; padding: 12px 16px; border: 1px solid var(--gray-200); border-radius: var(--r-sm); text-decoration: none; color: var(--gray-800); transition: all .15s; }
+.video-link:hover { border-color: var(--blue-400); background: var(--blue-50); text-decoration: none; }
+.video-link .material-icons-outlined { font-size: 20px; color: var(--blue-500); }
+.video-link-text { font-size: 14px; font-weight: 600; color: var(--blue-600); }
+.video-link-source { font-size: 12px; color: var(--gray-500); font-weight: 400; }
+
+/* ========== ALWAYS-VISIBLE SECTIONS ========== */
+.always-visible { margin-top: 40px; }
+.section-card { background: var(--white); border-radius: var(--r); box-shadow: var(--shadow); padding: 24px; border: 1px solid var(--gray-100); margin-bottom: 24px; }
+.section-title { font-size: 22px; font-weight: 900; color: var(--blue-700); letter-spacing: -.02em; margin-bottom: 18px; text-transform: uppercase; border-bottom: 3px solid var(--blue-500); padding-bottom: 10px; display: inline-block; }
+.related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+.related-card { padding: 14px; border-bottom: 1px solid var(--gray-200); text-decoration: none; color: var(--gray-800); transition: all .15s; }
+.related-card:hover { background: var(--gray-50); text-decoration: none; }
+.related-card h4 { font-size: 14px; font-weight: 700; color: var(--gray-900); margin-bottom: 4px; }
+.related-zone { display: flex; gap: 3px; }
+.zone-dot { width: 22px; height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700; border: 1px solid var(--gray-300); color: var(--gray-400); }
+.zone-dot.filled { background: var(--blue-500); color: #fff; border-color: var(--blue-500); }
+.carousel-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
+.carousel-dots { display: flex; align-items: center; gap: 8px; }
+.carousel-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--gray-300); }
+.carousel-dot.active { background: var(--blue-500); }
+.carousel-btn { width: 32px; height: 32px; border-radius: 50%; border: 1px solid var(--gray-300); background: var(--white); display: flex; align-items: center; justify-content: center; color: var(--blue-500); font-size: 18px; cursor: pointer; transition: all .15s; }
+.carousel-btn:hover { background: var(--blue-50); border-color: var(--blue-400); }
+.offers-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
+.offer-card { display: flex; align-items: center; gap: 12px; padding: 14px; background: var(--white); border: 1px solid var(--gray-200); border-radius: var(--r-sm); text-decoration: none; color: var(--gray-800); transition: all .15s; }
+.offer-card:hover { border-color: var(--blue-400); box-shadow: var(--shadow); text-decoration: none; }
+.offer-card .material-icons-outlined { font-size: 20px; color: var(--blue-500); flex-shrink: 0; }
+.offer-card-text h4 { font-size: 13px; font-weight: 700; color: var(--gray-900); }
+.offer-card-text p { font-size: 11px; color: var(--gray-500); }
+
+/* FOOTER */
+.site-footer { background: var(--blue-900); color: rgba(255,255,255,.6); padding: 48px 0 24px; }
+.footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 32px; margin-bottom: 32px; }
+.footer-col h4 { font-size: 13px; font-weight: 700; color: #fff; margin-bottom: 14px; text-transform: uppercase; letter-spacing: .06em; }
+.footer-col a { display: block; padding: 3px 0; color: rgba(255,255,255,.5); font-size: 13px; } .footer-col a:hover { color: var(--blue-300); text-decoration: none; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.08); padding-top: 20px; text-align: center; font-size: 12px; color: rgba(255,255,255,.3); }
+</style>
+</head>
+<body>
+
+<!-- GOV BAR -->
+<div class="gov-bar">
+  <div class="container">
+    <div class="gov-bar-left">
+      <span style="font-size:14px; color:#fff;">&#127467;&#127479;</span>
+      <div class="sep"></div>
+      <span>Travail Connect</span>
+      <span style="font-weight:400; opacity:.6;">Ministère du Travail et des Solidarités</span>
+    </div>
+    <div class="gov-bar-right">
+      <a href="#">Accessibilité</a>
+      <a href="#">FR | EN</a>
+      <a href="#" style="display:flex;align-items:center;gap:4px;"><span class="material-icons-outlined" style="font-size:14px;">person</span> Se connecter</a>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-mark"><span class="material-icons-outlined">explore</span></div>
+      <div class="logo-text">Travail<span>Connect</span></div>
+    </a>
+    <nav class="nav-main">
+      <a href="index.html" class="nav-link">Accueil</a>
+      <a href="#" class="nav-link">Métiers</a>
+      <a href="#" class="nav-link">Formations</a>
+      <a href="#" class="nav-link">Secteurs</a>
+      <a href="#" class="nav-link">Communauté</a>
+      <a href="#" class="nav-link">Média</a>
+    </nav>
+    <div class="header-actions">
+      <button class="icon-btn"><span class="material-icons-outlined">search</span></button>
+      <button class="icon-btn"><span class="material-icons-outlined">person_outline</span></button>
+    </div>
+    <button class="menu-toggle"><span class="material-icons-outlined">menu</span></button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="career-hero">
+  <div class="container hero-inner">
+    <div class="breadcrumb">
+      <a href="index.html">Accueil</a> <span>›</span>
+      <a href="#">Métiers</a> <span>›</span>
+      <a href="#">Santé, Social & Bien-être</a> <span>›</span>
+      <span style="color:rgba(255,255,255,.9);">Aide-soignant(e)</span>
+    </div>
+    <div class="hero-top">
+      <div class="hero-left">
+        <h1 class="hero-title">Aide-soignant(e)</h1>
+        <div class="hero-sector"><span class="material-icons-outlined" style="font-size:14px;">local_hospital</span> Santé, Social & Bien-être</div>
+        <p class="hero-desc">L'aide-soignant(e) accompagne les patients dans les gestes de la vie quotidienne, réalise des soins d'hygiène et de confort, et participe à la surveillance de l'état de santé. Un métier humain et essentiel, au coeur du système de soins français.</p>
+        <div class="hero-pills">
+          <span class="pill pill-white"><span class="material-icons-outlined">euro</span> 21k — 30k € brut/an</span>
+          <span class="pill pill-green"><span class="material-icons-outlined">trending_up</span> Forte demande</span>
+          <span class="pill pill-orange"><span class="material-icons-outlined">groups</span> +60 000 recrutements/an</span>
+        </div>
+      </div>
+      <div class="hero-actions">
+        <button class="btn-hero" onclick="this.querySelector('.material-icons-outlined').textContent = this.querySelector('.material-icons-outlined').textContent === 'favorite_border' ? 'favorite' : 'favorite_border'"><span class="material-icons-outlined">favorite_border</span> Favoris</button>
+        <button class="btn-hero"><span class="material-icons-outlined">share</span> Partager</button>
+      </div>
+    </div>
+    <div class="hero-demand">
+      <div class="hero-demand-banner"><span style="font-size:24px;">&#128293;</span><div><strong>Métier en forte demande</strong> — 80% des recrutements jugés difficiles</div></div>
+      <div class="hero-stats-row">
+        <div class="hero-stat"><div class="hero-stat-val">423 500</div><div class="hero-stat-lbl">en activité</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">60 140</div><div class="hero-stat-lbl">recrutements / an</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">80%</div><div class="hero-stat-lbl">difficiles</div></div>
+        <div class="hero-stat"><div class="hero-stat-val">500k</div><div class="hero-stat-lbl">postes d'ici 4 ans</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== KNOWLEDGE & SKILLS STRIP (toujours visible, hors layout) ========== -->
+<div class="container" style="margin-top:24px; margin-bottom:8px;">
+  <div style="display:flex; gap:40px; flex-wrap:wrap; font-size:12px; color:var(--gray-500); font-weight:600; text-transform:uppercase; letter-spacing:.04em;">
+    <span>Les savoirs sont classés par importance pour ce métier</span>
+    <span>Les compétences sont classées par importance pour ce métier</span>
+  </div>
+</div>
+
+<!-- ========== MAIN LAYOUT ========== -->
+<div class="container">
+  <div class="main-layout">
+
+    <!-- SIDE NAV -->
+    <nav class="side-nav">
+      <div class="side-nav-list">
+        <a class="side-nav-link active" onclick="showPanel('context')">Contexte de travail</a>
+        <a class="side-nav-link" onclick="showPanel('vie-pro')">Vie professionnelle</a>
+        <a class="side-nav-link" onclick="showPanel('profil')">Le profil</a>
+        <a class="side-nav-link" onclick="showPanel('formation')">Entrée / Progression</a>
+        <a class="side-nav-link" onclick="showPanel('salaire')">Salaire</a>
+        <a class="side-nav-link disabled">Marché de l'emploi</a>
+        <a class="side-nav-link" onclick="showPanel('contacts')">Contacts utiles</a>
+      </div>
+    </nav>
+
+    <!-- CONTENT PANELS -->
+    <div class="content-col">
+
+      <!-- PANEL: CONTEXTE -->
+      <div class="panel active" id="panel-context">
+        <h2 class="panel-title">Contexte de travail</h2>
+        <p style="color:var(--gray-600); margin-bottom:16px;">Ce métier s'exerce principalement dans les secteurs suivants :</p>
+        <div class="env-grid">
+          <div class="env-card">
+            <div class="env-card-img" style="background-image:url('https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?w=400&h=260&fit=crop')"></div>
+            <div class="env-card-body"><div class="env-card-icon"><span class="material-icons-outlined">local_hospital</span></div><div class="env-card-text"><h4>Hôpitaux & Cliniques</h4><p>Santé, Social & Bien-être</p></div></div>
+          </div>
+          <div class="env-card">
+            <div class="env-card-img" style="background-image:url('https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=260&fit=crop')"></div>
+            <div class="env-card-body"><div class="env-card-icon"><span class="material-icons-outlined">elderly</span></div><div class="env-card-text"><h4>EHPAD & Médico-social</h4><p>Santé, Social & Bien-être</p></div></div>
+          </div>
+          <div class="env-card">
+            <div class="env-card-img" style="background-image:url('https://images.unsplash.com/photo-1584515933487-779824d29309?w=400&h=260&fit=crop')"></div>
+            <div class="env-card-body"><div class="env-card-icon"><span class="material-icons-outlined">home</span></div><div class="env-card-text"><h4>Soins à domicile</h4><p>Santé, Social & Bien-être</p></div></div>
+          </div>
+          <div class="env-card">
+            <div class="env-card-img" style="background-image:url('https://images.unsplash.com/photo-1582750433449-648ed127bb54?w=400&h=260&fit=crop')"></div>
+            <div class="env-card-body"><div class="env-card-icon"><span class="material-icons-outlined">healing</span></div><div class="env-card-text"><h4>Centres de rééducation</h4><p>Santé, Social & Bien-être</p></div></div>
+          </div>
+        </div>
+
+        <h3 class="sub-title">Savoirs à acquérir</h3>
+        <div class="gauge-list">
+          <div class="gauge-item"><span class="gauge-label">Soins d'hygiène et confort</span><div class="gauge-track"><div class="gauge-fill high" style="width:95%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Observation clinique</span><div class="gauge-track"><div class="gauge-fill high" style="width:88%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Paramètres vitaux</span><div class="gauge-track"><div class="gauge-fill high" style="width:82%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Protocoles de sécurité</span><div class="gauge-track"><div class="gauge-fill mid" style="width:78%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Anatomie / Physiologie</span><div class="gauge-track"><div class="gauge-fill mid" style="width:70%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Gestes d'urgence (AFGSU)</span><div class="gauge-track"><div class="gauge-fill mid" style="width:65%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Dossier de soins / Transmissions</span><div class="gauge-track"><div class="gauge-fill low" style="width:55%"></div></div></div>
+        </div>
+        <p class="gauge-note">Les savoirs sont classés par importance pour ce métier</p>
+
+        <h3 class="sub-title">Compétences à maîtriser</h3>
+        <div class="gauge-list">
+          <div class="gauge-item"><span class="gauge-label">Accompagnement relationnel</span><div class="gauge-track"><div class="gauge-fill high" style="width:92%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Travail en équipe</span><div class="gauge-track"><div class="gauge-fill high" style="width:90%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Aide à la mobilité</span><div class="gauge-track"><div class="gauge-fill high" style="width:85%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Aide à l'alimentation</span><div class="gauge-track"><div class="gauge-fill mid" style="width:80%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Entretien de l'environnement</span><div class="gauge-track"><div class="gauge-fill mid" style="width:72%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Communication patient/famille</span><div class="gauge-track"><div class="gauge-fill mid" style="width:68%"></div></div></div>
+          <div class="gauge-item"><span class="gauge-label">Outils numériques de soin</span><div class="gauge-track"><div class="gauge-fill low" style="width:45%"></div></div></div>
+        </div>
+        <p class="gauge-note">Les compétences sont classées par importance pour ce métier</p>
+
+        <h3 class="sub-title">Vidéos sur le web</h3>
+        <div class="video-list">
+          <a href="https://www.youtube.com/results?search_query=aide+soignant+métier" target="_blank" class="video-link"><span class="material-icons-outlined">play_circle</span><span class="video-link-text">Aide-soignant(e) <span class="video-link-source">— YouTube Search</span></span></a>
+          <a href="https://www.youtube.com/results?search_query=devenir+aide+soignant" target="_blank" class="video-link"><span class="material-icons-outlined">play_circle</span><span class="video-link-text">Devenir aide-soignant(e) : témoignages <span class="video-link-source">— YouTube Video</span></span></a>
+        </div>
+      </div>
+
+      <!-- PANEL: VIE PRO -->
+      <div class="panel" id="panel-vie-pro">
+        <h2 class="panel-title">Vie professionnelle</h2>
+        <h3 class="sub-title" style="margin-top:0;">Activités les plus fréquentes</h3>
+        <div class="activity-list" style="margin-bottom:24px;">
+          <div class="activity-row"><div class="activity-bar-track"><div class="activity-bar-fill" style="width:95%"></div></div><span class="activity-name">Soins d'hygiène et de confort</span></div>
+          <div class="activity-row"><div class="activity-bar-track"><div class="activity-bar-fill" style="width:90%"></div></div><span class="activity-name">Surveillance de l'état de santé</span></div>
+          <div class="activity-row"><div class="activity-bar-track"><div class="activity-bar-fill" style="width:88%"></div></div><span class="activity-name">Aide à la mobilité et transferts</span></div>
+          <div class="activity-row"><div class="activity-bar-track"><div class="activity-bar-fill" style="width:85%"></div></div><span class="activity-name">Aide aux repas et hydratation</span></div>
+          <div class="activity-row"><div class="activity-bar-track"><div class="activity-bar-fill" style="width:80%"></div></div><span class="activity-name">Mesure des paramètres vitaux</span></div>
+          <div class="activity-row"><div class="activity-bar-track"><div class="activity-bar-fill" style="width:75%"></div></div><span class="activity-name">Entretien de l'environnement</span></div>
+          <div class="activity-row"><div class="activity-bar-track"><div class="activity-bar-fill" style="width:70%"></div></div><span class="activity-name">Transmissions écrites et orales</span></div>
+          <div class="activity-row"><div class="activity-bar-track"><div class="activity-bar-fill" style="width:50%"></div></div><span class="activity-name">Animation et stimulation cognitive</span></div>
+        </div>
+        <h3 class="sub-title">Une journée type</h3>
+        <div class="tasks-list">
+          <div class="task-item"><span class="task-num">1</span><span class="task-text"><strong>Prise de poste (6h30) :</strong> relève, lecture des transmissions, état des patients.</span></div>
+          <div class="task-item"><span class="task-num">2</span><span class="task-text"><strong>Tour du matin :</strong> aide au lever, toilettes, habillage, petit-déjeuner, constantes.</span></div>
+          <div class="task-item"><span class="task-num">3</span><span class="task-text"><strong>Soins :</strong> réfection des lits, nursing, aide à la prise de médicaments sous contrôle infirmier.</span></div>
+          <div class="task-item"><span class="task-num">4</span><span class="task-text"><strong>Repas de midi :</strong> aide à l'alimentation, surveillance de l'hydratation.</span></div>
+          <div class="task-item"><span class="task-num">5</span><span class="task-text"><strong>Après-midi :</strong> activités d'animation, accompagnement en consultation.</span></div>
+          <div class="task-item"><span class="task-num">6</span><span class="task-text"><strong>Fin de poste (14h30) :</strong> transmissions écrites et orales, relève.</span></div>
+        </div>
+      </div>
+
+      <!-- PANEL: PROFIL -->
+      <div class="panel" id="panel-profil">
+        <h2 class="panel-title">Le profil type</h2>
+        <p style="color:var(--gray-600); margin-bottom:16px;">Bonne condition physique indispensable. Vous devez pouvoir travailler en autonomie tout en suivant rigoureusement les protocoles de sécurité.</p>
+        <div class="qualities-grid">
+          <div class="quality-chip"><span class="material-icons-outlined">favorite</span><span>Empathie et bienveillance</span></div>
+          <div class="quality-chip"><span class="material-icons-outlined">visibility</span><span>Sens de l'observation</span></div>
+          <div class="quality-chip"><span class="material-icons-outlined">self_improvement</span><span>Patience et calme</span></div>
+          <div class="quality-chip"><span class="material-icons-outlined">forum</span><span>Aisance relationnelle</span></div>
+          <div class="quality-chip"><span class="material-icons-outlined">verified</span><span>Rigueur et fiabilité</span></div>
+          <div class="quality-chip"><span class="material-icons-outlined">fitness_center</span><span>Résistance physique</span></div>
+          <div class="quality-chip"><span class="material-icons-outlined">groups</span><span>Esprit d'équipe</span></div>
+          <div class="quality-chip"><span class="material-icons-outlined">psychology</span><span>Gestion du stress</span></div>
+        </div>
+        <div class="interest-block">
+          <h4>&#9879; Profil Social</h4>
+          <p>Les personnes de type « Social » aiment aider les autres, travailler en équipe et être à l'écoute. Elles sont attirées par les métiers du soin, du contact humain et de l'accompagnement.</p>
+        </div>
+      </div>
+
+      <!-- PANEL: FORMATION -->
+      <div class="panel" id="panel-formation">
+        <h2 class="panel-title">Entrée / Progression</h2>
+        <h3 class="sub-title" style="margin-top:0;">Parcours de formation</h3>
+        <div class="timeline">
+          <div class="timeline-item"><h4>Formation initiale DEAS</h4><p>11 mois en IFAS. Sélection sur dossier + entretien. Accessible dès 17 ans, sans diplôme requis.</p><div class="timeline-tags"><span class="tag tag-blue">11 mois</span><span class="tag tag-green">Aucun diplôme requis</span><span class="tag tag-orange">7 800 — 10 000 €</span></div></div>
+          <div class="timeline-item"><h4>VAE — Validation des Acquis</h4><p>1 607 heures d'expérience dans le soin pour obtenir le DEAS par la VAE.</p><div class="timeline-tags"><span class="tag tag-blue">1 607h d'expérience</span><span class="tag tag-green">CPF finançable</span></div></div>
+          <div class="timeline-item"><h4>Apprentissage</h4><p>Formation en alternance rémunérée. De 17 à 29 ans (sans limite d'âge pour TH).</p><div class="timeline-tags"><span class="tag tag-blue">18 mois</span><span class="tag tag-green">Rémunéré</span></div></div>
+        </div>
+        <h3 class="sub-title">Évolutions de carrière</h3>
+        <div class="timeline">
+          <div class="timeline-item"><h4>Infirmier(e) (IDE)</h4><p>Passerelle : 3 mois prépa + 2e année IFSI. Condition : 3 ans d'expérience + AFGSU2.</p><div class="timeline-tags"><span class="tag tag-blue">Bac+3</span><span class="tag tag-green">Passerelle AS</span></div></div>
+          <div class="timeline-item"><h4>Auxiliaire de puériculture</h4><p>Dispenses de modules grâce au DEAS. Spécialisation petite enfance.</p><div class="timeline-tags"><span class="tag tag-blue">Dispenses modules</span></div></div>
+          <div class="timeline-item"><h4>Assistant(e) soins en gérontologie</h4><p>Formation complémentaire de 140h pour les maladies neurodégénératives.</p><div class="timeline-tags"><span class="tag tag-orange">140h complémentaires</span></div></div>
+        </div>
+      </div>
+
+      <!-- PANEL: SALAIRE -->
+      <div class="panel" id="panel-salaire">
+        <h2 class="panel-title">Salaire</h2>
+        <div class="salary-range-visual">
+          <div><div class="salary-val">21k€</div><div class="salary-lbl">Débutant</div></div>
+          <div class="salary-bar-outer"><div class="salary-bar-inner" style="width:100%"></div></div>
+          <div><div class="salary-val">32k€</div><div class="salary-lbl">Expérimenté</div></div>
+        </div>
+        <table class="salary-table">
+          <thead><tr><th>Expérience</th><th>Public (net/mois)</th><th>Privé (net/mois)</th><th>Brut annuel</th></tr></thead>
+          <tbody>
+            <tr><td>Débutant</td><td><span class="salary-highlight">1 700 — 1 800 €</span></td><td><span class="salary-highlight">1 600 — 1 700 €</span></td><td>~21k — 23k €</td></tr>
+            <tr><td>Confirmé (5-10 ans)</td><td><span class="salary-highlight">1 850 — 2 100 €</span></td><td><span class="salary-highlight">1 800 — 2 000 €</span></td><td>~24k — 27k €</td></tr>
+            <tr><td>Expérimenté (15+ ans)</td><td><span class="salary-highlight">2 100 — 2 500 €</span></td><td><span class="salary-highlight">2 000 — 2 300 €</span></td><td>~27k — 32k €</td></tr>
+          </tbody>
+        </table>
+        <p style="margin-top:12px; font-size:11px; color:var(--gray-400);">Sources : grille FPH 2026, Dares, Ségur. Inclut prime Ségur. MAJ : avril 2026.</p>
+      </div>
+
+      <!-- PANEL: CONTACTS -->
+      <div class="panel" id="panel-contacts">
+        <h2 class="panel-title">Contacts utiles</h2>
+        <div class="contacts-grid">
+          <div class="contact-card"><h4>France Travail</h4><p>Accompagnement emploi — Tél : 3949</p><a href="https://www.francetravail.fr" target="_blank">francetravail.fr &#8594;</a></div>
+          <div class="contact-card"><h4>Mon CEP</h4><p>Conseil en évolution pro — Tél : 1 800 900 175</p><a href="https://www.mon-cep.org" target="_blank">mon-cep.org &#8594;</a></div>
+          <div class="contact-card"><h4>Mon Compte Formation</h4><p>Solde CPF et formations éligibles.</p><a href="https://www.moncompteformation.gouv.fr" target="_blank">moncompteformation.gouv.fr &#8594;</a></div>
+          <div class="contact-card"><h4>France VAE</h4><p>Validez votre expérience en diplôme.</p><a href="https://www.vae.gouv.fr" target="_blank">vae.gouv.fr &#8594;</a></div>
+          <div class="contact-card"><h4>FNAAS</h4><p>Fédération nationale des aides-soignants.</p><a href="https://www.fnaas.fr" target="_blank">fnaas.fr &#8594;</a></div>
+          <div class="contact-card"><h4>Ministère de la Santé</h4><p>Informations officielles sur la formation DEAS.</p><a href="https://sante.gouv.fr" target="_blank">sante.gouv.fr &#8594;</a></div>
+        </div>
+      </div>
+
+      <!-- ===== TOUJOURS VISIBLE : FAMILLE + OFFRES ===== -->
+      <div class="always-visible">
+
+        <!-- DANS LA MÊME FAMILLE DE MÉTIERS -->
+        <div class="section-card">
+          <div class="carousel-header">
+            <h2 class="section-title">DANS LA MÊME FAMILLE DE MÉTIERS</h2>
+            <div class="carousel-dots">
+              <span class="carousel-dot active"></span><span class="carousel-dot"></span><span class="carousel-dot"></span>
+              <button class="carousel-btn"><span class="material-icons-outlined">chevron_left</span></button>
+              <button class="carousel-btn"><span class="material-icons-outlined">chevron_right</span></button>
+            </div>
+          </div>
+          <div class="related-grid">
+            <a href="#" class="related-card"><h4>Auxiliaire de puériculture</h4><div class="related-zone"><span class="zone-dot filled">1</span><span class="zone-dot filled">2</span><span class="zone-dot filled">3</span><span class="zone-dot">4</span><span class="zone-dot">5</span></div></a>
+            <a href="#" class="related-card"><h4>Agent de service hospitalier</h4><div class="related-zone"><span class="zone-dot filled">1</span><span class="zone-dot filled">2</span><span class="zone-dot">3</span><span class="zone-dot">4</span><span class="zone-dot">5</span></div></a>
+            <a href="#" class="related-card"><h4>Accompagnant éducatif et social</h4><div class="related-zone"><span class="zone-dot filled">1</span><span class="zone-dot filled">2</span><span class="zone-dot filled">3</span><span class="zone-dot">4</span><span class="zone-dot">5</span></div></a>
+            <a href="#" class="related-card"><h4>Infirmier(e) (IDE)</h4><div class="related-zone"><span class="zone-dot filled">1</span><span class="zone-dot filled">2</span><span class="zone-dot filled">3</span><span class="zone-dot filled">4</span><span class="zone-dot">5</span></div></a>
+            <a href="#" class="related-card"><h4>Ambulancier(e)</h4><div class="related-zone"><span class="zone-dot filled">1</span><span class="zone-dot filled">2</span><span class="zone-dot filled">3</span><span class="zone-dot">4</span><span class="zone-dot">5</span></div></a>
+            <a href="#" class="related-card"><h4>Aide médico-psychologique</h4><div class="related-zone"><span class="zone-dot filled">1</span><span class="zone-dot filled">2</span><span class="zone-dot">3</span><span class="zone-dot">4</span><span class="zone-dot">5</span></div></a>
+            <a href="#" class="related-card"><h4>Brancardier(e)</h4><div class="related-zone"><span class="zone-dot filled">1</span><span class="zone-dot filled">2</span><span class="zone-dot">3</span><span class="zone-dot">4</span><span class="zone-dot">5</span></div></a>
+            <a href="#" class="related-card"><h4>Technicien(ne) de laboratoire</h4><div class="related-zone"><span class="zone-dot filled">1</span><span class="zone-dot filled">2</span><span class="zone-dot filled">3</span><span class="zone-dot filled">4</span><span class="zone-dot">5</span></div></a>
+            <a href="#" class="related-card"><h4>Assistant(e) soins gérontologie</h4><div class="related-zone"><span class="zone-dot filled">1</span><span class="zone-dot filled">2</span><span class="zone-dot filled">3</span><span class="zone-dot">4</span><span class="zone-dot">5</span></div></a>
+          </div>
+          <p style="margin-top:12px; font-size:12px; color:var(--gray-400);">127 métiers trouvés — affichage de 9 max. <a href="#">Voir tous les métiers de la famille &#8594;</a></p>
+        </div>
+
+        <!-- OFFRES D'EMPLOI -->
+        <div class="section-card">
+          <h2 class="section-title">OFFRES D'EMPLOI ACTUELLES</h2>
+          <div class="offers-grid">
+            <a href="https://candidat.francetravail.fr/offres/recherche?motsCles=aide-soignant" target="_blank" rel="noopener" class="offer-card"><span class="material-icons-outlined">open_in_new</span><div class="offer-card-text"><h4>France Travail</h4><p>Offres publiques et privées</p></div></a>
+            <a href="https://www.indeed.fr/emplois?q=aide+soignant" target="_blank" rel="noopener" class="offer-card"><span class="material-icons-outlined">open_in_new</span><div class="offer-card-text"><h4>Indeed</h4><p>Moteur de recherche emploi</p></div></a>
+            <a href="https://www.linkedin.com/jobs/search/?keywords=aide-soignant&location=France" target="_blank" rel="noopener" class="offer-card"><span class="material-icons-outlined">open_in_new</span><div class="offer-card-text"><h4>LinkedIn</h4><p>Réseau professionnel</p></div></a>
+            <a href="https://emploi.fhf.fr/" target="_blank" rel="noopener" class="offer-card"><span class="material-icons-outlined">open_in_new</span><div class="offer-card-text"><h4>FHF — Hôpitaux</h4><p>Offres hospitalières</p></div></a>
+            <a href="https://www.staffsante.fr/" target="_blank" rel="noopener" class="offer-card"><span class="material-icons-outlined">open_in_new</span><div class="offer-card-text"><h4>Staffsanté</h4><p>Spécialisé santé</p></div></a>
+            <a href="https://www.labonnealternance.pole-emploi.fr/" target="_blank" rel="noopener" class="offer-card"><span class="material-icons-outlined">open_in_new</span><div class="offer-card-text"><h4>La Bonne Alternance</h4><p>Alternances</p></div></a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /content-col -->
+  </div><!-- /main-layout -->
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-col"><h4>Explorer</h4><a href="#">Catalogue des métiers</a><a href="#">Secteurs d'activité</a><a href="#">Métiers en tension</a><a href="#">Quiz d'orientation</a></div>
+      <div class="footer-col"><h4>Se former</h4><a href="#">Trouver une formation</a><a href="#">Apprentissage</a><a href="#">VAE</a><a href="#">Financer sa formation</a></div>
+      <div class="footer-col"><h4>Communauté</h4><a href="#">Forum</a><a href="#">Témoignages</a><a href="#">Événements</a><a href="#">Blog / Média</a></div>
+      <div class="footer-col"><h4>Travail Connect</h4><a href="#">À propos</a><a href="#">Accessibilité</a><a href="#">Mentions légales</a><a href="#">Données personnelles</a></div>
+    </div>
+    <div class="footer-bottom">Travail Connect — Ministère du Travail et des Solidarités — Prototype Phase 3 — Avril 2026</div>
+  </div>
+</footer>
+
+<script>
+function showPanel(id) {
+  // Hide all panels
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  // Deactivate all nav links
+  document.querySelectorAll('.side-nav-link').forEach(l => l.classList.remove('active'));
+  // Show selected panel
+  const panel = document.getElementById('panel-' + id);
+  if (panel) panel.classList.add('active');
+  // Activate clicked link
+  event.currentTarget.classList.add('active');
+  // Scroll to top of content area
+  window.scrollTo({ top: document.querySelector('.main-layout').offsetTop - 80, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>

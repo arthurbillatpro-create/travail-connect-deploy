@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Travail Connect — Le portail des métiers et formations</title>
+<meta name="description" content="1 250 métiers, 8 500 formations, 240 témoignages vidéo. Le service public d'orientation du Ministère du Travail.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Spectral:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.47.0/tabler-icons.min.css">
+<link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+
+<div class="gouv-bar">
+  <div class="container">
+    <div class="gouv-tri">
+      <div class="gouv-tri-mark"><span></span><span></span><span></span></div>
+      <span>République Française</span>
+    </div>
+    <div class="gouv-right">
+      <a href="#">service-public.fr</a>
+      <a href="#">gouvernement.fr</a>
+      <a href="#">Accessibilité</a>
+    </div>
+  </div>
+</div>
+
+<header class="site-header">
+  <div class="container">
+    <div class="header-row">
+      <a href="index.html" class="brand">
+        <span class="brand-mark">T</span>
+        <div class="brand-text"><strong>Travail Connect</strong><span>Ministère du Travail</span></div>
+      </a>
+      <div class="search-box">
+        <i class="ti ti-search"></i>
+        <input type="text" placeholder="Rechercher un métier, une formation…">
+        <kbd>⌘K</kbd>
+      </div>
+      <div class="header-actions">
+        <a href="#" class="btn-icon"><i class="ti ti-heart"></i></a>
+        <a href="#" class="btn-primary"><i class="ti ti-user"></i> Mon espace</a>
+      </div>
+    </div>
+  </div>
+  <nav class="main-nav">
+    <div class="container">
+      <div class="nav-row">
+        <a href="index.html" class="nav-item active"><i class="ti ti-home"></i> Accueil</a>
+        <a href="recherche.html" class="nav-item"><i class="ti ti-briefcase"></i> Métiers</a>
+        <a href="secteur.html" class="nav-item"><i class="ti ti-apps"></i> Secteurs</a>
+        <a href="formation.html" class="nav-item"><i class="ti ti-school"></i> Formations</a>
+        <a href="#" class="nav-item"><i class="ti ti-player-play"></i> Vidéos</a>
+        <a href="#" class="nav-item"><i class="ti ti-bulb"></i> Conseils</a>
+        <a href="#" class="nav-item"><i class="ti ti-compass"></i> Test d'orientation</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <span class="hero-eyebrow"><i class="ti ti-shield-check"></i> Service public d'orientation</span>
+      <h1>Trouvez le métier qui vous <em>ressemble vraiment</em>.</h1>
+      <p class="lead">1 250 fiches métiers, 8 500 formations référencées, 240 témoignages vidéo. Conçu pour les jeunes, les demandeurs d'emploi et les personnes en reconversion.</p>
+
+      <form class="hero-search" onsubmit="event.preventDefault()">
+        <select>
+          <option>Métier</option>
+          <option>Formation</option>
+          <option>Secteur</option>
+        </select>
+        <input type="text" placeholder="Ex : soudeur, infirmier, développeur…">
+        <button type="submit"><i class="ti ti-search"></i> Rechercher</button>
+      </form>
+
+      <div class="hero-tags">
+        <a href="#" class="hero-tag">Métiers en tension</a>
+        <a href="#" class="hero-tag">Reconversion</a>
+        <a href="#" class="hero-tag">Apprentissage</a>
+        <a href="#" class="hero-tag">Métiers verts</a>
+        <a href="#" class="hero-tag">Sans diplôme</a>
+        <a href="#" class="hero-tag">Numérique</a>
+      </div>
+
+      <div class="hero-stats">
+        <div><div class="hero-stat-num">1 250</div><div class="hero-stat-lbl">Fiches métiers</div></div>
+        <div><div class="hero-stat-num">8 500</div><div class="hero-stat-lbl">Formations</div></div>
+        <div><div class="hero-stat-num">240+</div><div class="hero-stat-lbl">Témoignages</div></div>
+        <div><div class="hero-stat-num">100 %</div><div class="hero-stat-lbl">Gratuit</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTEURS -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Explorer par <em>secteur</em></h2>
+        <p>Chaque secteur regroupe métiers, formations, salaires moyens et tendances de recrutement actualisées.</p>
+      </div>
+      <a href="#" class="section-link">Les 18 secteurs <i class="ti ti-arrow-right"></i></a>
+    </div>
+
+    <div class="sector-tiles">
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-heart-handshake sector-tile-icon"></i><span class="sector-tile-count">184</span></div><h3>Santé & Social</h3><p class="sector-tile-meta"><strong>Forte demande</strong></p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-code sector-tile-icon"></i><span class="sector-tile-count">96</span></div><h3>Numérique & IT</h3><p class="sector-tile-meta"><strong>En tension</strong></p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-building sector-tile-icon"></i><span class="sector-tile-count">112</span></div><h3>BTP & Construction</h3><p class="sector-tile-meta"><strong>Forte demande</strong></p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-tools sector-tile-icon"></i><span class="sector-tile-count">147</span></div><h3>Industrie</h3><p class="sector-tile-meta"><strong>En tension</strong></p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-shopping-bag sector-tile-icon"></i><span class="sector-tile-count">78</span></div><h3>Commerce & Vente</h3><p class="sector-tile-meta">Stable</p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-book sector-tile-icon"></i><span class="sector-tile-count">52</span></div><h3>Éducation</h3><p class="sector-tile-meta">Stable</p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-palette sector-tile-icon"></i><span class="sector-tile-count">89</span></div><h3>Arts & Culture</h3><p class="sector-tile-meta">Compétitif</p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-scale sector-tile-icon"></i><span class="sector-tile-count">34</span></div><h3>Droit & Justice</h3><p class="sector-tile-meta">Compétitif</p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-tools-kitchen-2 sector-tile-icon"></i><span class="sector-tile-count">67</span></div><h3>Hôtellerie</h3><p class="sector-tile-meta"><strong>En tension</strong></p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-tractor sector-tile-icon"></i><span class="sector-tile-count">71</span></div><h3>Agriculture</h3><p class="sector-tile-meta">Stable</p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-truck sector-tile-icon"></i><span class="sector-tile-count">54</span></div><h3>Transport</h3><p class="sector-tile-meta"><strong>Forte demande</strong></p></a>
+      <a href="secteur.html" class="sector-tile"><div class="sector-tile-head"><i class="ti ti-leaf sector-tile-icon"></i><span class="sector-tile-count">62</span></div><h3>Environnement</h3><p class="sector-tile-meta"><strong>En croissance</strong></p></a>
+    </div>
+  </div>
+</section>
+
+<!-- MÉTIERS EN TENSION — la grande grille compacte -->
+<section class="section bg-light">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Les métiers qui <em>recrutent</em> en 2026</h2>
+        <p>Sélection des métiers en forte tension d'après les données du Ministère du Travail et de France Travail.</p>
+      </div>
+      <a href="recherche.html" class="section-link">Voir tous les métiers <i class="ti ti-arrow-right"></i></a>
+    </div>
+
+    <div class="filter-bar">
+      <div class="filter-chips">
+        <button class="chip active">Tous</button>
+        <button class="chip"><i class="ti ti-flame"></i> Tension forte</button>
+        <button class="chip">Sans bac</button>
+        <button class="chip">Reconversion</button>
+        <button class="chip">Numérique</button>
+        <button class="chip">Métiers verts</button>
+      </div>
+      <div style="display:flex; gap:8px; align-items:center;">
+        <span class="legend"><span class="legend-dot"></span> En tension</span>
+        <select class="sort-select">
+          <option>Tri : tension décroissante</option>
+          <option>Salaire ↑</option>
+          <option>Salaire ↓</option>
+          <option>Alphabétique</option>
+        </select>
+      </div>
+    </div>
+
+    <!-- 12 cartes : grille compacte 3×4 -->
+    <div class="metier-grid">
+      <a href="fiche-metier.html" class="metier-card in-tension">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-tool"></i> Industrie</span><span class="metier-card-tension"><i class="ti ti-flame"></i> Tension</span></div>
+        <h3>Métallier-Soudeur·euse</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">1 950 – 2 700 €</span><span class="metier-card-level">CAP</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card in-tension">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-heart-handshake"></i> Santé</span><span class="metier-card-tension"><i class="ti ti-flame"></i> Tension</span></div>
+        <h3>Infirmier·ère DE</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">2 100 – 3 400 €</span><span class="metier-card-level">Bac+3</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card in-tension">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-code"></i> Numérique</span><span class="metier-card-tension"><i class="ti ti-flame"></i> Tension</span></div>
+        <h3>Développeur·euse fullstack</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">2 800 – 5 200 €</span><span class="metier-card-level">Bac+2</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card in-tension">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-building"></i> BTP</span><span class="metier-card-tension"><i class="ti ti-flame"></i> Tension</span></div>
+        <h3>Couvreur·euse-zingueur·euse</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">1 900 – 2 600 €</span><span class="metier-card-level">CAP</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card in-tension">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-leaf"></i> Énergie</span><span class="metier-card-tension"><i class="ti ti-flame"></i> Tension</span></div>
+        <h3>Technicien·ne ENR</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">2 000 – 2 900 €</span><span class="metier-card-level">Bac Pro</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card in-tension">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-heart-handshake"></i> Santé</span><span class="metier-card-tension"><i class="ti ti-flame"></i> Tension</span></div>
+        <h3>Aide-soignant·e</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">1 800 – 2 300 €</span><span class="metier-card-level">DEAS</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-calculator"></i> Compta</span></div>
+        <h3>Comptable</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">2 200 – 3 800 €</span><span class="metier-card-level">Bac+2</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card in-tension">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-chart-line"></i> Data</span><span class="metier-card-tension"><i class="ti ti-flame"></i> Tension</span></div>
+        <h3>Data Analyst</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">3 000 – 4 800 €</span><span class="metier-card-level">Bac+3</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card in-tension">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-building"></i> BTP</span><span class="metier-card-tension"><i class="ti ti-flame"></i> Tension</span></div>
+        <h3>Maçon·ne</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">1 850 – 2 600 €</span><span class="metier-card-level">CAP</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card in-tension">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-tools"></i> Industrie</span><span class="metier-card-tension"><i class="ti ti-flame"></i> Tension</span></div>
+        <h3>Chaudronnier·ère</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">2 100 – 3 200 €</span><span class="metier-card-level">CAP</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-shopping-bag"></i> Commerce</span></div>
+        <h3>Vendeur·euse spécialisé·e</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">1 750 – 2 200 €</span><span class="metier-card-level">CAP</span></div>
+      </a>
+      <a href="fiche-metier.html" class="metier-card in-tension">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-tools-kitchen-2"></i> Hôtellerie</span><span class="metier-card-tension"><i class="ti ti-flame"></i> Tension</span></div>
+        <h3>Cuisinier·ère</h3>
+        <div class="metier-card-foot"><span class="metier-card-salary">1 800 – 2 500 €</span><span class="metier-card-level">CAP</span></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- TEMOIGNAGES VIDEO -->
+<section class="section">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <h2>Ils racontent <em>leur métier</em></h2>
+        <p>Des professionnels en activité partagent leur parcours et leur quotidien.</p>
+      </div>
+      <a href="#" class="section-link">Toutes les vidéos <i class="ti ti-arrow-right"></i></a>
+    </div>
+
+    <div class="metier-grid">
+      <a href="#" class="metier-card">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-player-play"></i> 4:32</span></div>
+        <h3>Sarah, métallière à Lille</h3>
+        <p style="font-size:11.5px; color:var(--ink-mute); font-style:italic;">« J'ai démarré par un CAP et aujourd'hui je dirige mon propre atelier. »</p>
+      </a>
+      <a href="#" class="metier-card">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-player-play"></i> 3:18</span></div>
+        <h3>Karim, infirmier urgentiste</h3>
+        <p style="font-size:11.5px; color:var(--ink-mute); font-style:italic;">« Aux urgences, chaque jour est différent — c'est ce qui me passionne. »</p>
+      </a>
+      <a href="#" class="metier-card">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-player-play"></i> 5:47</span></div>
+        <h3>Léa, développeuse en reconversion</h3>
+        <p style="font-size:11.5px; color:var(--ink-mute); font-style:italic;">« Après 8 ans dans la finance, j'ai sauté le pas. »</p>
+      </a>
+      <a href="#" class="metier-card">
+        <div class="metier-card-head"><span class="metier-card-sector"><i class="ti ti-player-play"></i> 4:05</span></div>
+        <h3>Théo, technicien éolien</h3>
+        <p style="font-size:11.5px; color:var(--ink-mute); font-style:italic;">« Travailler en mer sur des éoliennes, mon rêve. »</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <a href="index.html" class="brand">
+          <span class="brand-mark">T</span>
+          <div class="brand-text"><strong>Travail Connect</strong><span>Ministère du Travail</span></div>
+        </a>
+        <p>Le service public d'information sur les métiers, les formations et l'emploi.</p>
+      </div>
+      <div class="footer-col"><h4>Explorer</h4><a href="recherche.html">Métiers</a><a href="secteur.html">Secteurs</a><a href="formation.html">Formations</a></div>
+      <div class="footer-col"><h4>S'orienter</h4><a href="#">Lycéens</a><a href="#">Demandeurs d'emploi</a><a href="#">Reconversion</a></div>
+      <div class="footer-col"><h4>Ressources</h4><a href="#">Guides</a><a href="#">Articles</a><a href="#">Outils</a></div>
+      <div class="footer-col"><h4>Le service</h4><a href="#">À propos</a><a href="#">Partenaires</a><a href="#">Contact</a></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="gouv-tri">
+        <div class="gouv-tri-mark"><span></span><span></span><span></span></div>
+        <span>République Française · Liberté · Égalité · Fraternité</span>
+      </div>
+      <div class="footer-bottom-links">
+        <a href="#">Mentions légales</a><a href="#">Données personnelles</a><a href="#">Accessibilité</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
